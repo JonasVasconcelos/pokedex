@@ -2,7 +2,7 @@ const cardHeader = document.getElementsByClassName('cardHeader');
 const pokemonName = document.getElementById('pokemonName');
 const cardImg = document.getElementsByClassName('cardImg');
 const cardSkills = document.getElementsByClassName('cardSkills');
-let pokemonDisplay = 0;
+let pokemonDisplay = 1;
 
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
@@ -55,7 +55,7 @@ const charLoad = (data) => {
   let lastChild = cardImg[0].lastElementChild
   let pIndex = document.createElement('p');
   pIndex.classList.add('cardIndex');
-  pIndex.innerHTML = `#${pokemonDisplay+1}`;
+  pIndex.innerHTML = `#${pokemonDisplay}`;
   lastChild.appendChild(pIndex);
 
   let pType = document.createElement('p');
@@ -76,7 +76,7 @@ const data = (pokemonIndex) => {
   fetch(dataURL)
   .then((response) => response.json())
   .then((data) => {
-    fetch(dataURL + data.results[pokemonIndex].name)
+    fetch(dataURL + pokemonIndex)
     .then((response) => response.json())
     .then((data) => charLoad(data))
   })
