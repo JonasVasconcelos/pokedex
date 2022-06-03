@@ -23,20 +23,25 @@ const statSetting = (stat) => {
   let statName = stat.stat.name;
   let statValue = stat.base_stat;
 
-  let pName = document.createElement('p');
-  pName.innerHTML = firstCap(statName);
-  pName.classList.add('Stats');
-  cardSkills[0].appendChild(pName);
-
   let divStats = document.createElement('div');
   divStats.classList.add('divStats')
   cardSkills[0].appendChild(divStats);
   let lastChild = cardSkills[0].lastElementChild
 
+  let pName = document.createElement('p');
+  pName.innerHTML = firstCap(statName);
+  pName.classList.add('Stats');
+  lastChild.appendChild(pName);
+
+  let divBarStatValue = document.createElement('div');
+  divBarStatValue.classList.add('StatsBarValue');
+  lastChild.appendChild(divBarStatValue);
+  lastChild = lastChild.lastElementChild
+
   let divValue = document.createElement('div');
   divValue.classList.add('StatsBar');
   divValue.style.paddingLeft = `${statValue/3}%`;
-  divValue.style.width = `${statValue/3}%`;
+  divValue.style.width = `${statValue}px`;
   lastChild.appendChild(divValue);
 
   let span = document.createElement('span');
