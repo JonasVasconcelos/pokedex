@@ -28,34 +28,44 @@ const statSetting = (stat) => {
   pName.classList.add('Stats');
   cardSkills[0].appendChild(pName);
 
+  let divStats = document.createElement('div');
+  divStats.classList.add('divStats')
+  cardSkills[0].appendChild(divStats);
+  let lastChild = cardSkills[0].lastElementChild
+
   let divValue = document.createElement('div');
   divValue.classList.add('StatsBar');
   divValue.style.paddingLeft = `${statValue/3}%`;
   divValue.style.width = `${statValue/3}%`;
-  cardSkills[0].appendChild(divValue);
+  lastChild.appendChild(divValue);
 
   let span = document.createElement('span');
   span.innerHTML = statValue;
-  cardSkills[0].lastElementChild.appendChild(span);
+  lastChild.appendChild(span);
 } 
 
 const charLoad = (data) => {
   pokemonName.innerHTML = firstCap(data.species.name);
   statNameFun();
 
+  let imgInfo = document.createElement('div')
+  imgInfo.classList.add('imgInfo')
+  cardImg[0].appendChild(imgInfo);
+
+  let lastChild = cardImg[0].lastElementChild
   let pIndex = document.createElement('p');
   pIndex.classList.add('cardIndex');
   pIndex.innerHTML = `#${pokemonDisplay+1}`;
-  cardImg[0].appendChild(pIndex);
-
-  let img = document.createElement('img')
-  img.src = data.sprites.other.home.front_default;
-  cardImg[0].appendChild(img)
+  lastChild.appendChild(pIndex);
 
   let pType = document.createElement('p');
   pType.classList.add('cardIndex');
   pType.innerHTML = `${firstCap(data.types[0].type.name)}`;
-  cardImg[0].appendChild(pType);
+  lastChild.appendChild(pType);
+
+  let img = document.createElement('img')
+  img.src = data.sprites.other.home.front_default;
+  cardImg[0].appendChild(img)
 
   data.stats.forEach(statSetting);
 }
