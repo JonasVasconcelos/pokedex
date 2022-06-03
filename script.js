@@ -45,12 +45,17 @@ const charLoad = (data) => {
 
   let pIndex = document.createElement('p');
   pIndex.classList.add('cardIndex');
-  pIndex.innerHTML = `#${pokemonDisplay}`;
+  pIndex.innerHTML = `#${pokemonDisplay+1}`;
   cardImg[0].appendChild(pIndex);
 
   let img = document.createElement('img')
   img.src = data.sprites.other.home.front_default;
   cardImg[0].appendChild(img)
+
+  let pType = document.createElement('p');
+  pType.classList.add('cardIndex');
+  pType.innerHTML = `${firstCap(data.types[0].type.name)}`;
+  cardImg[0].appendChild(pType);
 
   data.stats.forEach(statSetting);
 }
