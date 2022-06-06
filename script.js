@@ -107,12 +107,18 @@ window.onload = () => data(pokemonDisplay);
 
 btnLeft.addEventListener('click', () => {
   pokemonDisplay -= 1;
+  if(pokemonDisplay <= 0) {
+    pokemonDisplay = 898;
+  }
   update();
   data(pokemonDisplay);
 })
 
 btnRight.addEventListener('click', () => {
   pokemonDisplay += 1;
+  if(pokemonDisplay > 898) {
+    pokemonDisplay = 1;
+  }
   update();
   data(pokemonDisplay);
 })
